@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  prl-airdrop-be:
+    container_name: prl-airdrop-be
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "$PORT:$PORT"
+    env_file: .env
+    restart: always

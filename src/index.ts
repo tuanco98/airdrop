@@ -1,14 +1,26 @@
-import { initGraphQLServer } from "./apollo";
-import { config_MONGO_URI } from "./config";
-import { connectMongo } from "./mongodb";
+import { initSentry, Sentry } from "./sentry"
+import { airdropDataCheckFollower } from "./cron/cron-check-twitter-follower"
+import { airdropDataCheckRetweetLink } from "./cron/cron-check-retweet-link"
+import { airdropDataCheckLikeTweet } from "./cron/cron-check-like-tweet"
+import { airdropDataCheckAcceptable } from "./cron/cron-check-acceptabe"
+import { check_status } from "./check_status"
 
-(async () => {
+
+const start = async () => {
     try {
-        await Promise.all([
-            connectMongo(config_MONGO_URI),
-            initGraphQLServer(),
-        ])
+        await initSentry()
+        await check_status()
+        await airdropDataCheckFollower()
+        await airdropDataCheckRetweetLink()
+        await airdropDataCheckLikeTweet()
+        await airdropDataCheckAcceptable()
     } catch (e) {
-        throw e
+        Sentry.captureException(e)
+        console.log(e)
     }
-})();
+}
+
+
+start()
+
+

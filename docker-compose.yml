@@ -1,12 +1,12 @@
 version: "3.7"
 
 services:
-  prl-airdrop-be:
-    container_name: prl-airdrop-be
+  parallel-airdrop:
+    container_name: parallel-airdrop
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "$PORT:$PORT"
+      - "$GRAPHQL_PORT:$GRAPHQL_PORT"
     env_file: .env
     restart: always

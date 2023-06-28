@@ -1,16 +1,92 @@
 import { config } from "dotenv"
 
 config()
-
+const ErrMsgConfig = (param: string) => {
+    return new Error(`${param} must be provided`)
+}
 // SERVER CONFIG
-if (!process.env.PORT) throw new Error('PORT must be provided')
-export const config_PORT = process.env.PORT
-if (!process.env.SERVER_CODE) throw new Error('SERVER_CODE must be provided')
-export const config_SERVER_CODE = process.env.SERVER_CODE
-if (!process.env.NODE_ENV) throw new Error('NODE_ENV must be provided')
-export const config_NODE_ENV = process.env.NODE_ENV
+if (!process.env.PORT) throw ErrMsgConfig("PORT")
+if (!process.env.SERVER_CODE) throw ErrMsgConfig("SERVER_CODE")
+if (!process.env.NODE_ENV) throw ErrMsgConfig("NODE_ENV")
+if (!process.env.ADMIN_KEY) throw ErrMsgConfig("ADMIN_KEY")
+if (!process.env.API_USER_URL) throw ErrMsgConfig("API_USER_URL")
+if (!process.env.USER_API_SERVER_KEY) throw ErrMsgConfig("USER_API_SERVER_KEY")
 
 // MONGO CONFIG
-if (!process.env.MONGO_URI) throw new Error('MONGO_URI must be provided')
-export const config_MONGO_URI = process.env.MONGO_URI
+if (!process.env.MONGO_URI) throw ErrMsgConfig("MONGO_URI")
 
+// TWEET CONFIG
+if (!process.env.TWITTER_ACCESS_TOKEN) throw ErrMsgConfig("TWITTER_ACCESS_TOKEN")
+if (!process.env.TWITTER_ACCESS_TOKEN_SECRET) throw ErrMsgConfig("TWITTER_ACCESS_TOKEN_SECRET")
+if (!process.env.TWITTER_APPLICATION_CONSUMER_KEY) throw ErrMsgConfig("TWITTER_APPLICATION_CONSUMER_KEY")
+if (!process.env.TWITTER_APPLICATION_CONSUMER_SECRET) throw ErrMsgConfig("TWITTER_APPLICATION_CONSUMER_SECRET")
+if (!process.env.TWITTER_BEARER_TOKEN) throw ErrMsgConfig("TWITTER_BEARER_TOKEN")
+if (!process.env.TWEET_POST_URL) throw ErrMsgConfig("TWEET_POST_URL")
+if (!process.env.TWEET_HASH_TAG_REQUIRE) throw ErrMsgConfig("TWEET_HASH_TAG_REQUIRE")
+
+// WEB3 CONFIG
+if (!process.env.WEB3_PROVIDER_AUTHEN_URI) throw ErrMsgConfig("WEB3_PROVIDER_AUTHEN_URI")
+
+// API BSC CONFIG
+if (!process.env.PROJECT_AIRDROP_ADDRESS_ACTIVE_BEFORE_TIMESTAMP_MS)
+    throw ErrMsgConfig("PROJECT_AIRDROP_ADDRESS_ACTIVE_BEFORE_TIMESTAMP_MS")
+if (!process.env.BSC_SCAN_API_KEY) throw ErrMsgConfig("BSC_SCAN_API_KEY")
+if (!process.env.BSC_NODE) throw ErrMsgConfig("BSC_NODE")
+
+if (!process.env.TIMESTAMP_START_EVENT) throw ErrMsgConfig("TIMESTAMP_START_EVENT")
+if (!process.env.TIMESTAMP_END_EVENT) throw ErrMsgConfig("TIMESTAMP_END_EVENT")
+
+// REWARD CONFIG
+if (!process.env.PRIVATE_BOT_REWARD_PARAART_COPY) throw ErrMsgConfig("PRIVATE_BOT_REWARD_PARAART_COPY")
+if (!process.env.PRIVATE_BOT_REWARD_PARAGON) throw ErrMsgConfig("PRIVATE_BOT_REWARD_PARAGON")
+if (!process.env.HASHES_PARA_ART_COPY) throw ErrMsgConfig("HASHES_PARA_ART_COPY")
+if (!process.env.AMOUNT_PER_HASHED) throw ErrMsgConfig("AMOUNT_PER_HASHED")
+// if (!process.env.TOKEN_ID_PRG_FIRST_PRIZE) throw ErrMsgConfig("TOKEN_ID_PRG_FIRST_PRIZE")
+// if (!process.env.TOKEN_IDS_PRG_THE_SECOND_PRIZE) throw ErrMsgConfig("TOKEN_IDS_PRG_THE_SECOND_PRIZE")
+// if (!process.env.TOKEN_IDS_PRG_THE_THIRD_PRIZE) throw ErrMsgConfig("TOKEN_IDS_PRG_THE_THIRD_PRIZE")
+if (!process.env.ENABLE_BOT_REWARD_PARAART_COPY) throw ErrMsgConfig("ENABLE_BOT_REWARD_PARAART_COPY")
+if (!process.env.ENABLE_BOT_REWARD_PARAGON) throw ErrMsgConfig("ENABLE_BOT_REWARD_PARAGON")
+
+// SMART CONTRACT CONFIG
+if (!process.env.CONTRACT_PARAART_ADDRESS) throw ErrMsgConfig("CONTRACT_PARAART_ADDRESS")
+if (!process.env.CONTRACT_PARAGON_ADDRESS) throw ErrMsgConfig("CONTRACT_PARAGON_ADDRESS")
+
+// REDIS CONFIG
+if (!process.env.REDIS_URI) throw ErrMsgConfig(`REDIS_URI`)
+if (!process.env.SERVER_CODE_REDIS) throw ErrMsgConfig("SERVER_CODE_REDIS")
+
+export const {
+    PORT,
+    SERVER_CODE,
+    NODE_ENV,
+    ADMIN_KEY,
+    API_USER_URL,
+    USER_API_SERVER_KEY,
+    MONGO_URI,
+    TWITTER_ACCESS_TOKEN,
+    TWITTER_ACCESS_TOKEN_SECRET,
+    TWITTER_APPLICATION_CONSUMER_KEY,
+    TWITTER_APPLICATION_CONSUMER_SECRET,
+    TWITTER_BEARER_TOKEN,
+    TWEET_POST_URL,
+    TWEET_HASH_TAG_REQUIRE,
+    WEB3_PROVIDER_AUTHEN_URI,
+    PROJECT_AIRDROP_ADDRESS_ACTIVE_BEFORE_TIMESTAMP_MS,
+    BSC_SCAN_API_KEY,
+    BSC_NODE,
+    TIMESTAMP_START_EVENT,
+    TIMESTAMP_END_EVENT,
+    PRIVATE_BOT_REWARD_PARAART_COPY,
+    PRIVATE_BOT_REWARD_PARAGON,
+    HASHES_PARA_ART_COPY,
+    AMOUNT_PER_HASHED,
+    TOKEN_ID_PRG_FIRST_PRIZE,
+    TOKEN_IDS_PRG_THE_SECOND_PRIZE,
+    TOKEN_IDS_PRG_THE_THIRD_PRIZE,
+    ENABLE_BOT_REWARD_PARAART_COPY,
+    ENABLE_BOT_REWARD_PARAGON,
+    CONTRACT_PARAART_ADDRESS,
+    CONTRACT_PARAGON_ADDRESS,
+    REDIS_URI,
+    SERVER_CODE_REDIS,
+} = process.env

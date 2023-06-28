@@ -1,4 +1,4 @@
-import { config_NODE_ENV } from "./config";
+import { NODE_ENV } from "./config";
 
 const colours = {
     reset: "\x1b[0m",
@@ -37,7 +37,7 @@ const successConsoleLog = (msg: string) => console.log(colours.fg.green, `✔️
 const warningConsoleLog = (msg: string) => console.log(colours.fg.yellow, msg, colours.reset)
 const errorConsoleLog = (msg: string) => console.log(colours.fg.red, msg, colours.reset)
 const consoleLogDev = (msg: any) => {
-    if (["dev"].includes(config_NODE_ENV)) {
+    if (["dev"].includes(NODE_ENV)) {
         console.log(msg)
     }
 }
